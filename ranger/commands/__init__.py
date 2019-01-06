@@ -5,7 +5,7 @@ import inspect
 from importlib import import_module
 from pprint import pprint
 
-from command_registrar import CommandRegistrar as registrar
+import command_registrar as registrar
 
 
 module_files = [filename.rsplit('.')[0] for filename in os.listdir('commands')
@@ -25,6 +25,5 @@ for filename in module_files:
         registrar.register_command(cls)
 
 
-print("Loaded command modules:")
-pprint(registrar._commands.keys())
-# XXX: get the list from the command registrar
+print("Loaded commands:")
+pprint(list(registrar.commands.keys()))
