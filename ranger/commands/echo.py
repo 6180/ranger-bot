@@ -1,4 +1,4 @@
-
+import utils
 
 class EchoCommand():
     # List of the handles this command is onvokable with.
@@ -17,4 +17,7 @@ class EchoCommand():
 
     @staticmethod
     async def execute(client, msg):
-        await msg.channel.send(msg.content)
+        resp = ' '.join(msg.content.split(' ')[1:])
+        await msg.channel.send(embed=utils.simple_embed(resp,
+                                                        author=msg.author,
+                                                        color=msg.author.color))
