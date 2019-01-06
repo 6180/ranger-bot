@@ -3,6 +3,10 @@ import logging
 import asyncio
 import json
 
+# The commands __init__.py file loads all of our command modules.
+import commands
+
+# Variables globally accessible through this module.
 client = discord.Client(max_messages=50000)
 config = None
 
@@ -39,7 +43,5 @@ if __name__ == '__main__':
 
     # Log the bot in and start running stuff.
     client.run(config['token'])
-
-
 else:
     print("You are importing the ranger root package as a module. I'm not sure what you are trying to do but you're doing it wrong.")
