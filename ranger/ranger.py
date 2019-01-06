@@ -20,16 +20,24 @@ async def on_message(message):
 
 
 if __name__ == '__main__':
-    # Set up logging
+    # Set up logging.
     logger = logging.getLogger('discord')
     logger.setLevel(logging.DEBUG)
-    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-    handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+    handler = logging.FileHandler(
+        filename='discord.log',
+        encoding='utf-8',
+        mode='w'
+    )
+    handler.setFormatter(logging.Formatter(
+        '%(asctime)s:%(levelname)s:%(name)s: %(message)s')
+    )
     logger.addHandler(handler)
 
+    # Load config file.
     with open('config.json', 'r') as fp:
         config = json.load(fp)
 
+    # Log the bot in and start running stuff.
     client.run(config['token'])
 
 
